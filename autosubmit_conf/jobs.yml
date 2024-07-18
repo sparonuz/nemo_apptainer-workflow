@@ -1,0 +1,41 @@
+JOBS:
+  LOCAL_SETUP:
+    FILE: autosubmit/local_setup.sh
+    PLATFORM: LOCAL
+    RUNNING: once
+
+  REMOTE_SETUP:
+    FILE: autosubmit/remote_setup.sh
+    DEPENDENCIES: LOCAL_SETUP
+    WALLCLOCK: 00:05
+    RUNNING: once
+
+  NEMO_IMG_PULL:
+    FILE: autosubmit/img_pull.sh
+    DEPENDENCIES: REMOTE_SETUP
+    PLATFORM: LUMI_LOGIN
+    WALLCLOCK: 00:25
+    RUNNING: once
+
+  NEMO_INPUTS:
+    FILE: autosubmit/prepare_input.sh
+    DEPENDENCIES: REMOTE_SETUP
+    PLATFORM: LUMI_LOGIN
+    WALLCLOCK: 00:25
+    RUNNING: once
+  
+  SINGULARITY_MOD_DEPLOY:
+    FILE: autosubmit/easybuild_singularity.sh
+    DEPENDENCIES: REMOTE_SETUP
+    PLATFORM: LUMI_LOGIN
+    WALLCLOCK: 00:25
+    RUNNING: once
+
+  NEMO_RUN:
+    FILE: autosubmit/nemo.sh
+    DEPENDENCIES: NEMO_INPUTS NEMO_IMG_PULL
+    PROCESSORS: 256
+    EXCLUSIVE: true
+    PLATFORM: LUMI
+    WALLCLOCK: 00:25
+    RUNNING: once

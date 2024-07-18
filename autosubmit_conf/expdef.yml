@@ -1,0 +1,13 @@
+DEFAULT:
+  # Default HPC platform name.
+  HPCARCH: "LUMI"
+EXPERIMENT:
+  # Experiment resources (up to a total of 128)
+  NEMO_CORES: 48
+  XIOS_CORES: 2
+DOCKER:
+  SERVER_ADDR: 'docker.mercator-ocean.fr/moi-docker/nemo-container'
+  IMG_TAG: '22.04'
+  IMG_NAME: 'apptainer-nemo.sif'
+  CACHE: 'AUTOSUBMIT_DOCKER_CACHE_FOLDER'
+
