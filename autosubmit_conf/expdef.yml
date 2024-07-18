@@ -2,6 +2,10 @@ DEFAULT:
   # Default HPC platform name.
   HPCARCH: "LUMI"
 EXPERIMENT:
+  # Unit of the chunk size. Can be hour, day, month, or year.
+  CHUNKSIZE: '4'
+  # Number of chunks of the experiment.
+  NUMCHUNKS: '2'
   # Experiment resources (up to a total of 128)
   NEMO_CORES: 48
   XIOS_CORES: 2
