@@ -1,0 +1,39 @@
+{
+    "ProcessId": "nemo-apptainer",
+    "CustomInput": {
+      "Simulation": {
+        "Steps": {
+          "EnvironmentVariableName": "TS_NUMBER"
+        },
+        "ModelRecources": {
+          "EnvironmentVariableName": "NEMO_CORES"
+        },
+        "IoResources":{
+          "EnvironmentVariableName": "XIOS_CORES"
+        }
+        },
+      "HPC": {
+        "ProjectNumber": {
+          "EnvironmentVariableName": "HPC_PROJECT_NUMBER"
+        },
+        "PartitionName":{
+          "EnvironmentVariableName": "HPC_PARTITION"   
+        },
+        "UserName":{
+          "EnvironmentVariableName": "HPC_USER"   
+        },
+        "ScratchDir":{
+          "EnvironmentVariableName": "HPC_SCRATCH_DIR"   
+        },
+        "DockerCacheFolder":{
+          "EnvironmentVariableName": "DOCKER_CACHE_FOLDER"   
+        }
+    },
+    "Contact": "jdoe",
+    "Description": "John Doe's HPC process",
+    "Icon": "https://www.mercator-ocean.eu/wp-content/uploads/2017/06/favicon-512x512-300x300.png",
+    "Home": "https://gitlab.mercator-ocean.fr/pub/edito-infra/edito-tutorials-content/-/blob/master/articles/CoralBleaching/coral-bleaching-presentation.md?ref_type=heads",
+    "LearnMoreLink": "https://fr.wikipedia.org/wiki/Teju%C3%A7uoca",
+    "Keywords": ["Test", "WIP"],
+    "AppVersion": "42"
+  }
