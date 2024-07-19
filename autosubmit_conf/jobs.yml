@@ -6,6 +6,7 @@ JOBS:
 
   REMOTE_SETUP:
     FILE: script/remote_setup.sh
+    PLATFORM: LUMI_LOGIN
     DEPENDENCIES: LOCAL_SETUP
     WALLCLOCK: 00:05
     RUNNING: once
