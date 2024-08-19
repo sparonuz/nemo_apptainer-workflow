@@ -1,6 +1,6 @@
 DEFAULT:
   # Default HPC platform name.
-  HPCARCH: "LUMI"
+  HPCARCH: "MN5"
 EXPERIMENT:
   # List of start dates
   DATELIST: '20000101'
