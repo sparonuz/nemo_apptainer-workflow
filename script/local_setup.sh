@@ -16,6 +16,4 @@ else
   echo "!!! model not present !!!"
   exit 1
 fi
-# transfer model
-rsync -avz ${PROJDEST}.tar.gz %HPCUSER%@%HPCHOST%:%HPCROOTDIR%/
 
