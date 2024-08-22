@@ -4,26 +4,20 @@ set -xve
 INPUT_DIR=%HPCROOTDIR%/INPUT
 # Create input dir, to be reused from run to run
 mkdir -p ${INPUT_DIR}
-# ORCA2_ICE_PISCES input files
-if [ ! -s  ${INPUT_DIR}/ORCA2_ICE_v4.2.0_LITE.tar.gz ]; then
-  curl https://s3.waw3-1.cloudferro.com/swift/v1/ORCA2_ICE_PISCES-input-files/ORCA2_ICE_v4.2.0_LITE.tar.gz --output ${INPUT_DIR}/ORCA2_ICE_v4.2.0_LITE.tar.gz
-fi
-if [ ! -d ${INPUT_DIR}/ORCA2_ICE_v4.2.0_LITE ]; then
-  tar -xzvf ${INPUT_DIR}/ORCA2_ICE_v4.2.0_LITE.tar.gz -C ${INPUT_DIR}/
-fi
-ln -sf ${INPUT_DIR}/ORCA2_ICE_v4.2.0_LITE/*  ${INPUT_DIR}/
 
-if [ ! -s ${INPUT_DIR}/ORCA2_ICE_v4.2_RC_FULL.tar.gz ]; then
-  curl https://s3.waw3-1.cloudferro.com/swift/v1/ORCA2_ICE_PISCES-input-files/ORCA2_ICE_v4.2_RC_FULL.tar.gz --output ${INPUT_DIR}/ORCA2_ICE_v4.2_RC_FULL.tar.gz
+if [ ! -s ${INPUT_DIR}/ORCA2_ICE_v4.2.tar  ]; then
+  wget https://zenodo.org/records/3767939/files/ORCA2_ICE_v4.2.tar -P ${INPUT_DIR} 
 fi
-if [ ! -d ${INPUT_DIR}/ORCA2_ICE_v4.2_RC_FULL ]; then
-  tar -xzvf ${INPUT_DIR}/ORCA2_ICE_v4.2_RC_FULL.tar.gz -C ${INPUT_DIR}/
+if [ ! -s ${INPUT_DIR}/ORCA2_ICE_v4.2.tar  ]; then
+  tar -xf ${INPUT_DIR}/ORCA2_ICE_v4.2.tar  -C ${INPUT_DIR}/
+  gunzip ${INPUT_DIR}/*.gz
 fi
-ln -sf ${INPUT_DIR}/ORCA2_ICE_v4.2_RC_FULL/*  ${INPUT_DIR}/
 
-if [ ! -s ${INPUT_DIR}/ORCA2_PISCES_v4.2_RC_FULL.tar.gz ]; then
-  curl "https://thredds-su.ipsl.fr/thredds/fileServer/ipsl_thredds/cetlod/INPUTS_for_NEMO/ORCA2_PISCES/ORCA2_PISCES_v4.2_RC_FULL.tar.gz" --output ${INPUT_DIR}/ORCA2_PISCES_v4.2_RC_FULL.tar.gz
+if [ ! -s ${INPUT_DIR}/INPUTS_PISCES_v4.2.tar ]; then
+  wget https://zenodo.org/records/3767939/files/INPUTS_PISCES_v4.2.tar  -P ${INPUT_DIR}
 fi
 if [ ! -s ${INPUT_DIR}/bathy.orca.nc ]; then
-  tar -xzvf ${INPUT_DIR}/ORCA2_PISCES_v4.2_RC_FULL.tar.gz -C ${INPUT_DIR}/
+  tar -xf ${INPUT_DIR}/INPUTS_PISCES_v4.2.tar -C ${INPUT_DIR}/
+  gunzip ${INPUT_DIR}/*.gz
 fi
+rm ${INPUT_DIR}/*.tar
