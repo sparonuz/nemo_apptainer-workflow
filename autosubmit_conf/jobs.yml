@@ -10,3 +10,26 @@ JOBS:
     DEPENDENCIES: LOCAL_SETUP
     WALLCLOCK: 00:05
     RUNNING: once
+
+  # NEMO_IMG_PULL:
+  #   FILE: script/img_pull.sh
+  #   DEPENDENCIES: REMOTE_SETUP
+  #   PLATFORM: MN5_LOGIN
+  #   WALLCLOCK: 00:25
+  #   RUNNING: once
+
+  NEMO_INPUTS:
+    FILE: script/prepare_input.sh
+    PLATFORM: MN5_LOGIN    
+    DEPENDENCIES: REMOTE_SETUP
+    WALLCLOCK: 00:25
+    RUNNING: once
+  
+  # NEMO_RUN:
+  #   FILE: script/nemo.sh
+  #   DEPENDENCIES: NEMO_INPUTS NEMO_IMG_PULL SINGULARITY_MOD_DEPLOY
+  #   PROCESSORS: 112
+  #   EXCLUSIVE: true
+  #   PLATFORM: MN5
+  #   WALLCLOCK: 00:25
+  #   RUNNING: once
